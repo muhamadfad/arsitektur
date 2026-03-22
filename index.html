@@ -2,14 +2,17 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Archindy Studio — Architecture Atelier</title>
-    <!-- Fonts Premium -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Archindy Studio — Architecture & Interior Atelier</title>
+    <!-- Google Fonts Premium -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
       rel="stylesheet"
     />
-    <!-- GSAP untuk Animasi Premium -->
+    <!-- GSAP untuk Animasi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link
@@ -48,9 +51,9 @@
 
       /* Container */
       .container-custom {
-        max-width: 1400px;
+        max-width: 1280px;
         margin: 0 auto;
-        padding: 0 60px;
+        padding: 0 48px;
       }
 
       /* Navigation */
@@ -60,22 +63,25 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        padding: 28px 60px;
+        padding: 24px 0;
         transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
         background: transparent;
       }
 
       .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.96);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(12px);
-        padding: 18px 60px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        padding: 16px 0;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
       }
 
       .nav-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 48px;
       }
 
       .logo {
@@ -104,7 +110,7 @@
 
       .logo-text {
         font-family: "Playfair Display", serif;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 600;
         letter-spacing: -0.5px;
         color: #1e1e1e;
@@ -114,9 +120,16 @@
         color: #9b7b5c;
       }
 
+      .logo-sub {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        color: #9b7b5c;
+        margin-top: 2px;
+      }
+
       .nav-links {
         display: flex;
-        gap: 42px;
+        gap: 40px;
         list-style: none;
       }
 
@@ -161,11 +174,11 @@
         top: 0;
         right: -100%;
         width: 100%;
-        max-width: 480px;
+        max-width: 420px;
         height: 100vh;
         background: #ffffff;
         z-index: 2000;
-        padding: 100px 48px;
+        padding: 100px 40px;
         transition: 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
         box-shadow: -20px 0 40px rgba(0, 0, 0, 0.05);
       }
@@ -176,8 +189,8 @@
 
       .mobile-menu-close {
         position: absolute;
-        top: 32px;
-        right: 32px;
+        top: 28px;
+        right: 28px;
         font-size: 28px;
         cursor: pointer;
         color: #1e1e1e;
@@ -188,7 +201,7 @@
       }
 
       .mobile-menu li {
-        margin-bottom: 32px;
+        margin-bottom: 28px;
         opacity: 0;
         transform: translateX(30px);
         transition: all 0.4s ease;
@@ -218,7 +231,7 @@
       .mobile-menu a {
         text-decoration: none;
         color: #1e1e1e;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-family: "Playfair Display", serif;
         font-weight: 500;
         transition: color 0.3s;
@@ -259,8 +272,8 @@
         height: 100%;
         background: linear-gradient(
           135deg,
-          rgba(0, 0, 0, 0.5) 0%,
-          rgba(0, 0, 0, 0.2) 100%
+          rgba(0, 0, 0, 0.55) 0%,
+          rgba(0, 0, 0, 0.25) 100%
         );
       }
 
@@ -268,12 +281,12 @@
         position: relative;
         z-index: 2;
         max-width: 800px;
-        padding-left: 60px;
+        padding-left: 48px;
       }
 
       .hero-subtitle {
         font-size: 0.7rem;
-        letter-spacing: 4px;
+        letter-spacing: 5px;
         text-transform: uppercase;
         color: #d4b48c;
         margin-bottom: 20px;
@@ -281,7 +294,7 @@
 
       .hero-title {
         font-family: "Playfair Display", serif;
-        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-size: clamp(3rem, 7vw, 5.2rem);
         font-weight: 600;
         line-height: 1.05;
         color: white;
@@ -289,17 +302,18 @@
       }
 
       .hero-desc {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.85);
         font-size: 1rem;
-        line-height: 1.6;
+        line-height: 1.65;
         margin-bottom: 32px;
-        max-width: 500px;
+        max-width: 520px;
       }
 
       .hero-stats {
         display: flex;
-        gap: 40px;
+        gap: 48px;
         margin-bottom: 40px;
+        flex-wrap: wrap;
       }
 
       .stat-value {
@@ -311,8 +325,9 @@
 
       .stat-label {
         font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.65);
         letter-spacing: 1px;
+        margin-top: 4px;
       }
 
       .btn-primary {
@@ -358,7 +373,7 @@
 
       /* Section Umum */
       .section {
-        padding: 120px 0;
+        padding: 100px 0;
       }
 
       .section-light {
@@ -380,17 +395,24 @@
 
       .section-title {
         font-family: "Playfair Display", serif;
-        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 500;
         line-height: 1.2;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
+      }
+
+      .section-subtitle {
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
       }
 
       /* About Grid */
       .about-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 80px;
+        gap: 70px;
         align-items: center;
       }
 
@@ -400,15 +422,14 @@
 
       .about-image img {
         width: 100%;
-        height: 550px;
+        height: 520px;
         object-fit: cover;
-        filter: grayscale(0.2);
       }
 
       .about-quote {
         position: absolute;
-        bottom: -30px;
-        left: -30px;
+        bottom: -28px;
+        left: -28px;
         background: #d4b48c;
         padding: 28px;
         width: 280px;
@@ -419,37 +440,110 @@
         line-height: 1.4;
       }
 
-      /* Services Grid */
+      .about-text p {
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      /* Services Grid - FULLY RESPONSIVE */
       .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        gap: 32px;
         margin-top: 60px;
       }
 
       .service-card {
-        padding: 32px 24px;
-        border-left: 2px solid #e8e2d9;
-        transition: all 0.3s;
+        background: white;
+        padding: 36px 28px;
+        transition: all 0.4s ease;
+        border-bottom: 2px solid #f0ece6;
+        height: 100%;
       }
 
       .service-card:hover {
-        border-left-color: #d4b48c;
-        padding-left: 36px;
+        transform: translateY(-6px);
+        border-bottom-color: #d4b48c;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05);
       }
 
       .service-number {
         font-family: "Playfair Display", serif;
-        font-size: 2rem;
+        font-size: 2.5rem;
+        font-weight: 600;
         color: #d4b48c;
+        opacity: 0.6;
         margin-bottom: 20px;
+        line-height: 1;
       }
 
-      /* Portfolio - Asymmetric Grid */
+      .service-icon {
+        width: 52px;
+        height: 52px;
+        background: #f9f7f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        border-radius: 2px;
+      }
+
+      .service-icon i {
+        font-size: 1.5rem;
+        color: #9b7b5c;
+      }
+
+      .service-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #1e1e1e;
+      }
+
+      .service-desc {
+        color: #666;
+        line-height: 1.65;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .service-divider {
+        width: 35px;
+        height: 2px;
+        background: #e8e2d9;
+        margin: 20px 0 18px;
+      }
+
+      .service-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .service-list li {
+        color: #555;
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        line-height: 1.4;
+      }
+
+      .service-list li i {
+        color: #d4b48c;
+        font-size: 0.8rem;
+        width: 18px;
+        flex-shrink: 0;
+      }
+
+      /* Portfolio Grid */
       .portfolio-grid {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
         margin-top: 60px;
       }
 
@@ -457,13 +551,14 @@
         position: relative;
         overflow: hidden;
         cursor: pointer;
+        aspect-ratio: 4/5;
       }
 
       .portfolio-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1);
+        transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1);
       }
 
       .portfolio-item:hover img {
@@ -475,8 +570,8 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-        padding: 28px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+        padding: 24px;
         transform: translateY(100%);
         transition: transform 0.4s;
       }
@@ -485,63 +580,30 @@
         transform: translateY(0);
       }
 
-      .item-1 {
-        grid-column: span 5;
-        aspect-ratio: 4/5;
-      }
-      .item-2 {
-        grid-column: span 7;
-        aspect-ratio: 4/5;
-      }
-      .item-3 {
-        grid-column: span 4;
-        aspect-ratio: 1/1;
-      }
-      .item-4 {
-        grid-column: span 4;
-        aspect-ratio: 1/1;
-      }
-      .item-5 {
-        grid-column: span 4;
-        aspect-ratio: 1/1;
-      }
-      .item-6 {
-        grid-column: span 6;
-        aspect-ratio: 16/9;
-      }
-      .item-7 {
-        grid-column: span 6;
-        aspect-ratio: 16/9;
+      .portfolio-overlay h3 {
+        color: white;
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        margin-bottom: 4px;
       }
 
-      /* Process */
+      .portfolio-overlay p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.75rem;
+      }
+
+      /* Process Grid */
       .process-grid {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 80px;
-        position: relative;
-      }
-
-      .process-grid::before {
-        content: "";
-        position: absolute;
-        top: 45px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: #e8e2d9;
-      }
-
-      .step {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 60px;
         text-align: center;
-        background: white;
-        padding: 0 20px;
-        z-index: 1;
       }
 
       .step-circle {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
         border: 1px solid #d4b48c;
         border-radius: 50%;
         display: flex;
@@ -551,9 +613,21 @@
         font-family: "Playfair Display", serif;
         margin: 0 auto 20px;
         background: white;
+        color: #9b7b5c;
       }
 
-      /* Testimonials */
+      .step h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .step p {
+        color: #666;
+        font-size: 0.8rem;
+      }
+
+      /* Testimonials Grid */
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -568,11 +642,30 @@
         border-left: 3px solid #d4b48c;
       }
 
-      /* Contact */
+      .testimonial-card i {
+        color: #d4b48c;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .testimonial-card p {
+        color: #555;
+        line-height: 1.6;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-card h4 {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      /* Contact Grid */
       .contact-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 80px;
+        gap: 70px;
       }
 
       .contact-info-item {
@@ -593,12 +686,13 @@
       .contact-form textarea {
         width: 100%;
         padding: 14px 0;
-        margin-bottom: 24px;
+        margin-bottom: 28px;
         border: none;
         border-bottom: 1px solid #e0dcd4;
         font-family: inherit;
         background: transparent;
         transition: 0.3s;
+        font-size: 0.9rem;
       }
 
       .contact-form input:focus,
@@ -607,18 +701,44 @@
         border-bottom-color: #d4b48c;
       }
 
+      .contact-form textarea {
+        resize: vertical;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: #1e1e1e;
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 16px;
+      }
+
+      .cta-section p {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 32px;
+      }
+
       /* Footer */
       .footer {
-        background: #1e1e1e;
-        padding: 60px 0 40px;
+        background: #111;
+        padding: 48px 0 32px;
         text-align: center;
         color: #888;
         font-size: 0.75rem;
       }
 
-      /* Responsive */
+      /* ========== RESPONSIVE MOBILE ========== */
       @media (max-width: 1024px) {
         .container-custom {
+          padding: 0 32px;
+        }
+        .nav-container {
           padding: 0 32px;
         }
         .nav-links {
@@ -635,49 +755,160 @@
           gap: 60px;
         }
         .services-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
         }
         .portfolio-grid {
-          display: flex;
-          flex-direction: column;
+          grid-template-columns: repeat(2, 1fr);
         }
         .process-grid {
-          flex-direction: column;
+          grid-template-columns: repeat(2, 1fr);
           gap: 40px;
-        }
-        .process-grid::before {
-          display: none;
         }
         .testimonials-grid {
           grid-template-columns: 1fr;
         }
         .contact-grid {
           grid-template-columns: 1fr;
+          gap: 50px;
         }
         .about-quote {
           position: relative;
           left: 0;
           bottom: 0;
-          margin-top: 20px;
+          margin-top: 24px;
           width: 100%;
         }
         .navbar {
-          padding: 20px 32px;
+          padding: 18px 0;
         }
         .navbar.scrolled {
-          padding: 14px 32px;
+          padding: 12px 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container-custom {
+          padding: 0 24px;
+        }
+        .hero-stats {
+          gap: 28px;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .section {
+          padding: 70px 0;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          margin-top: 40px;
+        }
+        .service-card {
+          padding: 28px 24px;
+          width: 100%;
+        }
+        .service-number {
+          font-size: 2rem;
+          margin-bottom: 16px;
+        }
+        .service-icon {
+          width: 48px;
+          height: 48px;
+          margin-bottom: 20px;
+        }
+        .service-icon i {
+          font-size: 1.3rem;
+        }
+        .service-title {
+          font-size: 1.3rem;
+          margin-bottom: 12px;
+        }
+        .service-desc {
+          font-size: 0.85rem;
+          margin-bottom: 16px;
+        }
+        .service-list li {
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+          gap: 10px;
+        }
+        .service-list li i {
+          font-size: 0.7rem;
+          width: 16px;
+        }
+        .service-divider {
+          margin: 16px 0 14px;
+        }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .process-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .step-circle {
+          width: 70px;
+          height: 70px;
+          font-size: 1.3rem;
+        }
+        .testimonial-card {
+          padding: 24px;
+        }
+        .cta-section h2 {
+          font-size: 1.6rem;
+        }
+        .cta-section {
+          padding: 60px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+        .hero-stats {
+          gap: 20px;
+        }
+        .stat-value {
+          font-size: 1.5rem;
+        }
+        .btn-primary,
+        .btn-outline {
+          padding: 10px 24px;
+          font-size: 0.7rem;
+        }
+        .service-card {
+          padding: 24px 20px;
+        }
+        .service-title {
+          font-size: 1.2rem;
+        }
+        .service-desc {
+          font-size: 0.8rem;
+        }
+        .service-list li {
+          font-size: 0.75rem;
         }
       }
     </style>
   </head>
   <body>
     <nav class="navbar" id="navbar">
-      <div class="container-custom nav-container">
+      <div class="nav-container">
         <a href="#home" class="logo">
           <div class="logo-img">
-            <img src="logo.png" alt="Archindy Studio" />
+            <img
+              src="https://placehold.co/44x44/9B7B5C/FFFFFF?text=A"
+              alt="Archindy Studio"
+            />
           </div>
-          <div class="logo-text">Archindy<span> Studio</span></div>
+          <div>
+            <div class="logo-text">Archindy<span> Studio</span></div>
+            <div class="logo-sub">ARCHITECTURE • INTERIOR</div>
+          </div>
         </a>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
@@ -705,6 +936,7 @@
       </ul>
     </div>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-bg">
         <img
@@ -714,7 +946,7 @@
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
-        <div class="hero-subtitle">ARCHINDY STUDIO</div>
+        <div class="hero-subtitle">ARCHINDY STUDIO • EST 2015</div>
         <h1 class="hero-title">Spatial Poetry<br />in Form</h1>
         <p class="hero-desc">
           Architecture, interior design, and construction in perfect harmony.
@@ -741,6 +973,7 @@
       </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="section section-light">
       <div class="container-custom about-grid">
         <div class="about-image">
@@ -753,21 +986,23 @@
             with the soul."
           </div>
         </div>
-        <div>
+        <div class="about-text">
           <div class="section-label">/ THE STUDIO</div>
           <h2 class="section-title">Where Architecture<br />Meets Emotion</h2>
-          <p style="color: #555; line-height: 1.7; margin-bottom: 20px">
+          <p>
             Archindy Studio is an architecture and interior design atelier
             dedicated to creating spaces that resonate with the soul. Every
             project begins with understanding — not just the brief, but the
             people who will inhabit the space.
           </p>
-          <p style="color: #555; line-height: 1.7">
+          <p>
             With over 900 completed projects across residential and commercial
             sectors, we've mastered the art of translating abstract desires into
-            tangible, timeless realities.
+            tangible, timeless realities. Our approach is holistic, merging
+            architectural precision with interior poetry and construction
+            excellence.
           </p>
-          <div style="margin-top: 32px">
+          <div style="margin-top: 28px">
             <div
               style="
                 width: 40px;
@@ -790,213 +1025,235 @@
       </div>
     </section>
 
+    <!-- Services Section - FULLY RESPONSIVE -->
     <section id="services" class="section section-dark">
       <div class="container-custom">
         <div style="text-align: center">
           <div class="section-label">/ CAPABILITIES</div>
           <h2 class="section-title">Integrated Design & Build</h2>
+          <p class="section-subtitle">
+            Solusi lengkap dari konsep hingga eksekusi, menghadirkan karya
+            arsitektur dan interior yang timeless
+          </p>
         </div>
+
         <div class="services-grid">
+          <!-- Card 1 - Architecture -->
           <div class="service-card">
             <div class="service-number">01</div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 12px">Architecture</h3>
-            <p style="color: #666; line-height: 1.6">
+            <div class="service-icon">
+              <i class="fas fa-drafting-compass"></i>
+            </div>
+            <h3 class="service-title">Architecture</h3>
+            <p class="service-desc">
               Residential, commercial, and sacred spaces designed with
-              contextual sensitivity and timeless elegance.
+              contextual sensitivity and timeless elegance. Setiap desain kami
+              pendekatan dengan pemahaman mendalam terhadap site, budaya, dan
+              kebutuhan pengguna.
             </p>
+            <div class="service-divider"></div>
+            <ul class="service-list">
+              <li><i class="fas fa-check-circle"></i> Desain Rumah Tinggal</li>
+              <li><i class="fas fa-check-circle"></i> Desain Ruko & Kantor</li>
+              <li>
+                <i class="fas fa-check-circle"></i> Desain Fasad & Landscape
+              </li>
+            </ul>
           </div>
+
+          <!-- Card 2 - Interior Design -->
           <div class="service-card">
             <div class="service-number">02</div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 12px">
-              Interior Design
-            </h3>
-            <p style="color: #666; line-height: 1.6">
+            <div class="service-icon">
+              <i class="fas fa-couch"></i>
+            </div>
+            <h3 class="service-title">Interior Design</h3>
+            <p class="service-desc">
               Spatial curation that balances aesthetics, functionality, and the
-              unique personality of each client.
+              unique personality of each client. Kami menghadirkan ruang
+              interior yang tidak hanya indah, tetapi juga nyaman dan
+              fungsional.
             </p>
+            <div class="service-divider"></div>
+            <ul class="service-list">
+              <li><i class="fas fa-check-circle"></i> Desain Interior Rumah</li>
+              <li><i class="fas fa-check-circle"></i> Desain Cafe & Resto</li>
+              <li><i class="fas fa-check-circle"></i> Furniture Custom</li>
+            </ul>
           </div>
+
+          <!-- Card 3 - General Contractor -->
           <div class="service-card">
             <div class="service-number">03</div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 12px">
-              General Contractor
-            </h3>
-            <p style="color: #666; line-height: 1.6">
+            <div class="service-icon">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3 class="service-title">General Contractor</h3>
+            <p class="service-desc">
               Precision execution with uncompromising quality standards and
-              meticulous project management.
+              meticulous project management. Eksekusi konstruksi dengan
+              pengawasan ketat, efisiensi biaya, dan tepat waktu.
             </p>
+            <div class="service-divider"></div>
+            <ul class="service-list">
+              <li>
+                <i class="fas fa-check-circle"></i> Renovasi & Bangun Baru
+              </li>
+              <li><i class="fas fa-check-circle"></i> Quality Control Ketat</li>
+              <li><i class="fas fa-check-circle"></i> Garansi Pengerjaan</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Portfolio Section -->
     <section id="portfolio" class="section section-light">
       <div class="container-custom">
         <div style="text-align: center">
           <div class="section-label">/ SELECTED WORKS</div>
           <h2 class="section-title">Recent Manifestations</h2>
+          <p class="section-subtitle">
+            Proyek unggulan dari klien yang percaya kepada Archindy Studio
+          </p>
         </div>
         <div class="portfolio-grid">
-          <div class="portfolio-item item-1">
+          <div class="portfolio-item">
             <img
               src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Eni House"
             />
             <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Eni House</h3>
-              <p style="font-size: 0.75rem">Residential Architecture</p>
+              <h3>Eni House</h3>
+              <p>Residential Architecture</p>
             </div>
           </div>
-          <div class="portfolio-item item-2">
+          <div class="portfolio-item">
             <img
               src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Black Kitchen"
             />
             <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Black Kitchen</h3>
-              <p style="font-size: 0.75rem">Kitchen Atelier</p>
+              <h3>Black Kitchen</h3>
+              <p>Kitchen Atelier</p>
             </div>
           </div>
-          <div class="portfolio-item item-3">
+          <div class="portfolio-item">
             <img
               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Family Room"
             />
             <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Family Room</h3>
-              <p style="font-size: 0.75rem">Interior Living</p>
+              <h3>Family Room</h3>
+              <p>Interior Living</p>
             </div>
           </div>
-          <div class="portfolio-item item-4">
+          <div class="portfolio-item">
             <img
               src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Mushola"
             />
             <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Mushola</h3>
-              <p style="font-size: 0.75rem">Sacred Space</p>
+              <h3>Mushola</h3>
+              <p>Sacred Space</p>
             </div>
           </div>
-          <div class="portfolio-item item-5">
+          <div class="portfolio-item">
             <img
               src="https://images.unsplash.com/photo-1600565193348-f74bd4c7dfcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Dapur Bersih"
             />
             <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Dapur Bersih</h3>
-              <p style="font-size: 0.75rem">Kitchen Design</p>
+              <h3>Dapur Bersih</h3>
+              <p>Kitchen Design</p>
             </div>
           </div>
-          <div class="portfolio-item item-6">
+          <div class="portfolio-item">
             <img
               src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Ruang Keluarga"
             />
             <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Ruang Keluarga</h3>
-              <p style="font-size: 0.75rem">Living Space</p>
-            </div>
-          </div>
-          <div class="portfolio-item item-7">
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-              alt="Sudut House"
-            />
-            <div class="portfolio-overlay">
-              <h3 style="font-size: 1.2rem">Sudut House</h3>
-              <p style="font-size: 0.75rem">Architectural Design</p>
+              <h3>Ruang Keluarga</h3>
+              <p>Living Space</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Process Section -->
     <section class="section section-dark">
       <div class="container-custom">
         <div style="text-align: center">
           <div class="section-label">/ METHODOLOGY</div>
           <h2 class="section-title">From Concept to Completion</h2>
+          <p class="section-subtitle">
+            Proses kerja yang jelas dan transparan untuk setiap proyek
+          </p>
         </div>
         <div class="process-grid">
           <div class="step">
             <div class="step-circle">01</div>
-            <h3 style="margin-bottom: 8px">Discover</h3>
-            <p style="color: #666; font-size: 0.8rem">
-              Deep listening & analysis
-            </p>
+            <h3>Discover</h3>
+            <p>Deep listening & site analysis</p>
           </div>
           <div class="step">
             <div class="step-circle">02</div>
-            <h3 style="margin-bottom: 8px">Concept</h3>
-            <p style="color: #666; font-size: 0.8rem">
-              Spatial narrative & design
-            </p>
+            <h3>Concept</h3>
+            <p>Spatial narrative & design</p>
           </div>
           <div class="step">
             <div class="step-circle">03</div>
-            <h3 style="margin-bottom: 8px">Realize</h3>
-            <p style="color: #666; font-size: 0.8rem">Precision construction</p>
+            <h3>Realize</h3>
+            <p>Precision construction</p>
           </div>
           <div class="step">
             <div class="step-circle">04</div>
-            <h3 style="margin-bottom: 8px">Reveal</h3>
-            <p style="color: #666; font-size: 0.8rem">Handover & aftercare</p>
+            <h3>Reveal</h3>
+            <p>Handover & aftercare</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Testimonials Section -->
     <section class="section section-light">
       <div class="container-custom">
         <div style="text-align: center">
           <div class="section-label">/ TESTIMONIALS</div>
           <h2 class="section-title">What Clients Say</h2>
+          <p class="section-subtitle">
+            Kepuasan klien adalah prioritas utama kami
+          </p>
         </div>
         <div class="testimonials-grid">
           <div class="testimonial-card">
-            <i
-              class="fas fa-quote-left"
-              style="
-                color: #d4b48c;
-                font-size: 1.5rem;
-                margin-bottom: 20px;
-                display: block;
-              "
-            ></i>
-            <p style="color: #555; line-height: 1.6; font-style: italic">
+            <i class="fas fa-quote-left"></i>
+            <p>
               "Archindy Studio didn't just design our home — they understood how
               we live. Every corner feels intentional, every space breathes."
             </p>
-            <h4 style="margin-top: 20px; font-weight: 600">
-              — Mrs. Rini, Eni House
-            </h4>
+            <h4>— Mrs. Rini, Eni House</h4>
           </div>
           <div class="testimonial-card">
-            <i
-              class="fas fa-quote-left"
-              style="
-                color: #d4b48c;
-                font-size: 1.5rem;
-                margin-bottom: 20px;
-                display: block;
-              "
-            ></i>
-            <p style="color: #555; line-height: 1.6; font-style: italic">
+            <i class="fas fa-quote-left"></i>
+            <p>
               "The precision of the kitchen set, the quality of materials, and
               the professionalism of the team exceeded our expectations."
             </p>
-            <h4 style="margin-top: 20px; font-weight: 600">
-              — Mr. Hendra, Black Kitchen
-            </h4>
+            <h4>— Mr. Hendra, Black Kitchen</h4>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="section section-dark">
       <div class="container-custom contact-grid">
         <div>
           <div class="section-label">/ CONNECT</div>
-          <h2 class="section-title" style="margin-bottom: 24px">
+          <h2 class="section-title" style="margin-bottom: 20px">
             Let's Create<br />Something Extraordinary
           </h2>
           <p style="color: #666; margin-bottom: 32px">
@@ -1038,7 +1295,7 @@
                 font-size: 0.7rem;
                 color: #888;
                 text-align: center;
-                margin-top: 16px;
+                margin-top: 20px;
               "
             >
               *We'll respond within 24 hours
@@ -1048,21 +1305,11 @@
       </div>
     </section>
 
-    <section style="background: #1e1e1e; padding: 80px 0; text-align: center">
+    <!-- CTA Section -->
+    <section class="cta-section">
       <div class="container-custom">
-        <h2
-          style="
-            font-family: &quot;Playfair Display&quot;, serif;
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 16px;
-          "
-        >
-          Start Your Journey
-        </h2>
-        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 32px">
-          Let's bring your architectural vision to life
-        </p>
+        <h2>Start Your Journey</h2>
+        <p>Let's bring your architectural vision to life</p>
         <a
           href="#contact"
           class="btn-primary"
@@ -1114,7 +1361,7 @@
         });
       });
 
-      // Navbar scroll
+      // Navbar scroll effect
       window.addEventListener("scroll", () => {
         const navbar = document.getElementById("navbar");
         if (window.scrollY > 50) navbar.classList.add("scrolled");
@@ -1140,9 +1387,9 @@
 
       gsap.from(".service-card", {
         scrollTrigger: { trigger: "#services", start: "top 80%" },
-        duration: 0.8,
+        duration: 0.1,
         y: 40,
-        opacity: 0,
+        opacity: 1,
         stagger: 0.2,
       });
 
@@ -1154,7 +1401,7 @@
         stagger: 0.1,
       });
 
-      // Form
+      // Form submit
       document
         .getElementById("contactForm")
         ?.addEventListener("submit", (e) => {
