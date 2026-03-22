@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Archindy Studio — Architecture Atelier</title>
+    <!-- Fonts Premium -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- GSAP untuk Animasi Premium -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+        color: #1e1e1e;
+        overflow-x: hidden;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #ede9e2;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #9b7b5c;
+      }
+
+      /* Typography */
+      .font-display {
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Container */
+      .container-custom {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 28px 60px;
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1);
+        background: transparent;
+      }
+
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        padding: 18px 60px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .logo-img {
+        width: 44px;
+        height: 44px;
+        background: #9b7b5c;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2px;
+      }
+
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        color: #1e1e1e;
+      }
+
+      .logo-text span {
+        color: #9b7b5c;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 42px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1e1e1e;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #9b7b5c;
+      }
+
+      /* Burger Menu */
+      .burger {
+        display: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        z-index: 1001;
+      }
+
+      .burger span {
+        display: block;
+        width: 24px;
+        height: 1.5px;
+        background: #1e1e1e;
+        margin: 6px 0;
+        transition: 0.3s;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 480px;
+        height: 100vh;
+        background: #ffffff;
+        z-index: 2000;
+        padding: 100px 48px;
+        transition: 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
+        box-shadow: -20px 0 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #1e1e1e;
+      }
+
+      .mobile-menu ul {
+        list-style: none;
+      }
+
+      .mobile-menu li {
+        margin-bottom: 32px;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.4s ease;
+      }
+
+      .mobile-menu.active li {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .mobile-menu.active li:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .mobile-menu.active li:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .mobile-menu.active li:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .mobile-menu.active li:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+      .mobile-menu.active li:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: #1e1e1e;
+        font-size: 1.5rem;
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: #9b7b5c;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.5) 0%,
+          rgba(0, 0, 0, 0.2) 100%
+        );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding-left: 60px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #d4b48c;
+        margin-bottom: 20px;
+      }
+
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 600;
+        line-height: 1.05;
+        color: white;
+        margin-bottom: 24px;
+      }
+
+      .hero-desc {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 32px;
+        max-width: 500px;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #d4b48c;
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 1px;
+      }
+
+      .btn-primary {
+        background: #d4b48c;
+        color: #1e1e1e;
+        border: none;
+        padding: 14px 36px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary:hover {
+        background: #b88f62;
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: white;
+        padding: 13px 34px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        margin-left: 16px;
+      }
+
+      .btn-outline:hover {
+        border-color: #d4b48c;
+        color: #d4b48c;
+      }
+
+      /* Section Umum */
+      .section {
+        padding: 120px 0;
+      }
+
+      .section-light {
+        background: #ffffff;
+      }
+
+      .section-dark {
+        background: #f9f7f4;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #9b7b5c;
+        margin-bottom: 16px;
+        display: inline-block;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 24px;
+      }
+
+      /* About Grid */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .about-image {
+        position: relative;
+      }
+
+      .about-image img {
+        width: 100%;
+        height: 550px;
+        object-fit: cover;
+        filter: grayscale(0.2);
+      }
+
+      .about-quote {
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        background: #d4b48c;
+        padding: 28px;
+        width: 280px;
+        color: #1e1e1e;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      /* Services Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .service-card {
+        padding: 32px 24px;
+        border-left: 2px solid #e8e2d9;
+        transition: all 0.3s;
+      }
+
+      .service-card:hover {
+        border-left-color: #d4b48c;
+        padding-left: 36px;
+      }
+
+      .service-number {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: #d4b48c;
+        margin-bottom: 20px;
+      }
+
+      /* Portfolio - Asymmetric Grid */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+        margin-top: 60px;
+      }
+
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1);
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.03);
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        padding: 28px;
+        transform: translateY(100%);
+        transition: transform 0.4s;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        transform: translateY(0);
+      }
+
+      .item-1 {
+        grid-column: span 5;
+        aspect-ratio: 4/5;
+      }
+      .item-2 {
+        grid-column: span 7;
+        aspect-ratio: 4/5;
+      }
+      .item-3 {
+        grid-column: span 4;
+        aspect-ratio: 1/1;
+      }
+      .item-4 {
+        grid-column: span 4;
+        aspect-ratio: 1/1;
+      }
+      .item-5 {
+        grid-column: span 4;
+        aspect-ratio: 1/1;
+      }
+      .item-6 {
+        grid-column: span 6;
+        aspect-ratio: 16/9;
+      }
+      .item-7 {
+        grid-column: span 6;
+        aspect-ratio: 16/9;
+      }
+
+      /* Process */
+      .process-grid {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 80px;
+        position: relative;
+      }
+
+      .process-grid::before {
+        content: "";
+        position: absolute;
+        top: 45px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #e8e2d9;
+      }
+
+      .step {
+        text-align: center;
+        background: white;
+        padding: 0 20px;
+        z-index: 1;
+      }
+
+      .step-circle {
+        width: 90px;
+        height: 90px;
+        border: 1px solid #d4b48c;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-family: "Playfair Display", serif;
+        margin: 0 auto 20px;
+        background: white;
+      }
+
+      /* Testimonials */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        max-width: 1000px;
+        margin: 60px auto 0;
+      }
+
+      .testimonial-card {
+        padding: 32px;
+        background: #f9f7f4;
+        border-left: 3px solid #d4b48c;
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+        color: #555;
+      }
+
+      .contact-info-item i {
+        width: 28px;
+        color: #d4b48c;
+        font-size: 1.1rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 14px 0;
+        margin-bottom: 24px;
+        border: none;
+        border-bottom: 1px solid #e0dcd4;
+        font-family: inherit;
+        background: transparent;
+        transition: 0.3s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-bottom-color: #d4b48c;
+      }
+
+      /* Footer */
+      .footer {
+        background: #1e1e1e;
+        padding: 60px 0 40px;
+        text-align: center;
+        color: #888;
+        font-size: 0.75rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .container-custom {
+          padding: 0 32px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .burger {
+          display: block;
+        }
+        .hero-content {
+          padding-left: 32px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .portfolio-grid {
+          display: flex;
+          flex-direction: column;
+        }
+        .process-grid {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .process-grid::before {
+          display: none;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .about-quote {
+          position: relative;
+          left: 0;
+          bottom: 0;
+          margin-top: 20px;
+          width: 100%;
+        }
+        .navbar {
+          padding: 20px 32px;
+        }
+        .navbar.scrolled {
+          padding: 14px 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="container-custom nav-container">
+        <a href="#home" class="logo">
+          <div class="logo-img">
+            <img src="logo.png" alt="Archindy Studio" />
+          </div>
+          <div class="logo-text">Archindy<span> Studio</span></div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Studio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="burger" id="burgerBtn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-close" id="closeMenuBtn">&times;</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">Studio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <section id="home" class="hero">
+      <div class="hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+          alt="Hero"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-subtitle">ARCHINDY STUDIO</div>
+        <h1 class="hero-title">Spatial Poetry<br />in Form</h1>
+        <p class="hero-desc">
+          Architecture, interior design, and construction in perfect harmony.
+          Creating spaces that speak.
+        </p>
+        <div class="hero-stats">
+          <div>
+            <span class="stat-value">12.3K+</span>
+            <div class="stat-label">FOLLOWERS</div>
+          </div>
+          <div>
+            <span class="stat-value">931+</span>
+            <div class="stat-label">PROJECTS</div>
+          </div>
+          <div>
+            <span class="stat-value">9+</span>
+            <div class="stat-label">YEARS</div>
+          </div>
+        </div>
+        <div>
+          <a href="#contact" class="btn-primary">Start a Project →</a>
+          <a href="#portfolio" class="btn-outline">Explore Works</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-light">
+      <div class="container-custom about-grid">
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+            alt="Studio"
+          />
+          <div class="about-quote">
+            "We don't just design spaces. We curate experiences that resonate
+            with the soul."
+          </div>
+        </div>
+        <div>
+          <div class="section-label">/ THE STUDIO</div>
+          <h2 class="section-title">Where Architecture<br />Meets Emotion</h2>
+          <p style="color: #555; line-height: 1.7; margin-bottom: 20px">
+            Archindy Studio is an architecture and interior design atelier
+            dedicated to creating spaces that resonate with the soul. Every
+            project begins with understanding — not just the brief, but the
+            people who will inhabit the space.
+          </p>
+          <p style="color: #555; line-height: 1.7">
+            With over 900 completed projects across residential and commercial
+            sectors, we've mastered the art of translating abstract desires into
+            tangible, timeless realities.
+          </p>
+          <div style="margin-top: 32px">
+            <div
+              style="
+                width: 40px;
+                height: 1px;
+                background: #d4b48c;
+                margin-bottom: 12px;
+              "
+            ></div>
+            <p
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-style: italic;
+                color: #888;
+              "
+            >
+              — Archindy Team
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section section-dark">
+      <div class="container-custom">
+        <div style="text-align: center">
+          <div class="section-label">/ CAPABILITIES</div>
+          <h2 class="section-title">Integrated Design & Build</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-number">01</div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 12px">Architecture</h3>
+            <p style="color: #666; line-height: 1.6">
+              Residential, commercial, and sacred spaces designed with
+              contextual sensitivity and timeless elegance.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-number">02</div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 12px">
+              Interior Design
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              Spatial curation that balances aesthetics, functionality, and the
+              unique personality of each client.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="service-number">03</div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 12px">
+              General Contractor
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              Precision execution with uncompromising quality standards and
+              meticulous project management.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section section-light">
+      <div class="container-custom">
+        <div style="text-align: center">
+          <div class="section-label">/ SELECTED WORKS</div>
+          <h2 class="section-title">Recent Manifestations</h2>
+        </div>
+        <div class="portfolio-grid">
+          <div class="portfolio-item item-1">
+            <img
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Eni House"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Eni House</h3>
+              <p style="font-size: 0.75rem">Residential Architecture</p>
+            </div>
+          </div>
+          <div class="portfolio-item item-2">
+            <img
+              src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Black Kitchen"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Black Kitchen</h3>
+              <p style="font-size: 0.75rem">Kitchen Atelier</p>
+            </div>
+          </div>
+          <div class="portfolio-item item-3">
+            <img
+              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Family Room"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Family Room</h3>
+              <p style="font-size: 0.75rem">Interior Living</p>
+            </div>
+          </div>
+          <div class="portfolio-item item-4">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Mushola"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Mushola</h3>
+              <p style="font-size: 0.75rem">Sacred Space</p>
+            </div>
+          </div>
+          <div class="portfolio-item item-5">
+            <img
+              src="https://images.unsplash.com/photo-1600565193348-f74bd4c7dfcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Dapur Bersih"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Dapur Bersih</h3>
+              <p style="font-size: 0.75rem">Kitchen Design</p>
+            </div>
+          </div>
+          <div class="portfolio-item item-6">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Ruang Keluarga"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Ruang Keluarga</h3>
+              <p style="font-size: 0.75rem">Living Space</p>
+            </div>
+          </div>
+          <div class="portfolio-item item-7">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Sudut House"
+            />
+            <div class="portfolio-overlay">
+              <h3 style="font-size: 1.2rem">Sudut House</h3>
+              <p style="font-size: 0.75rem">Architectural Design</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="container-custom">
+        <div style="text-align: center">
+          <div class="section-label">/ METHODOLOGY</div>
+          <h2 class="section-title">From Concept to Completion</h2>
+        </div>
+        <div class="process-grid">
+          <div class="step">
+            <div class="step-circle">01</div>
+            <h3 style="margin-bottom: 8px">Discover</h3>
+            <p style="color: #666; font-size: 0.8rem">
+              Deep listening & analysis
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-circle">02</div>
+            <h3 style="margin-bottom: 8px">Concept</h3>
+            <p style="color: #666; font-size: 0.8rem">
+              Spatial narrative & design
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-circle">03</div>
+            <h3 style="margin-bottom: 8px">Realize</h3>
+            <p style="color: #666; font-size: 0.8rem">Precision construction</p>
+          </div>
+          <div class="step">
+            <div class="step-circle">04</div>
+            <h3 style="margin-bottom: 8px">Reveal</h3>
+            <p style="color: #666; font-size: 0.8rem">Handover & aftercare</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container-custom">
+        <div style="text-align: center">
+          <div class="section-label">/ TESTIMONIALS</div>
+          <h2 class="section-title">What Clients Say</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <i
+              class="fas fa-quote-left"
+              style="
+                color: #d4b48c;
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                display: block;
+              "
+            ></i>
+            <p style="color: #555; line-height: 1.6; font-style: italic">
+              "Archindy Studio didn't just design our home — they understood how
+              we live. Every corner feels intentional, every space breathes."
+            </p>
+            <h4 style="margin-top: 20px; font-weight: 600">
+              — Mrs. Rini, Eni House
+            </h4>
+          </div>
+          <div class="testimonial-card">
+            <i
+              class="fas fa-quote-left"
+              style="
+                color: #d4b48c;
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                display: block;
+              "
+            ></i>
+            <p style="color: #555; line-height: 1.6; font-style: italic">
+              "The precision of the kitchen set, the quality of materials, and
+              the professionalism of the team exceeded our expectations."
+            </p>
+            <h4 style="margin-top: 20px; font-weight: 600">
+              — Mr. Hendra, Black Kitchen
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-dark">
+      <div class="container-custom contact-grid">
+        <div>
+          <div class="section-label">/ CONNECT</div>
+          <h2 class="section-title" style="margin-bottom: 24px">
+            Let's Create<br />Something Extraordinary
+          </h2>
+          <p style="color: #666; margin-bottom: 32px">
+            Discuss your vision with our team. Initial consultation is
+            complimentary.
+          </p>
+          <div class="contact-info-item">
+            <i class="fas fa-phone-alt"></i><span>+62 71 188 451</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fab fa-instagram"></i
+            ><span>@archindy_arsitektur_interior</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i><span>hello@archindy.studio</span>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i><span>Jakarta, Indonesia</span>
+          </div>
+        </div>
+        <div>
+          <form id="contactForm" class="contact-form">
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <textarea
+              rows="4"
+              placeholder="Tell us about your project..."
+            ></textarea>
+            <button
+              type="submit"
+              class="btn-primary"
+              style="width: 100%; background: #9b7b5c"
+            >
+              Send Inquiry →
+            </button>
+            <p
+              style="
+                font-size: 0.7rem;
+                color: #888;
+                text-align: center;
+                margin-top: 16px;
+              "
+            >
+              *We'll respond within 24 hours
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #1e1e1e; padding: 80px 0; text-align: center">
+      <div class="container-custom">
+        <h2
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 16px;
+          "
+        >
+          Start Your Journey
+        </h2>
+        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 32px">
+          Let's bring your architectural vision to life
+        </p>
+        <a
+          href="#contact"
+          class="btn-primary"
+          style="background: #d4b48c; color: #1e1e1e"
+          >Discuss Your Project →</a
+        >
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container-custom">
+        <p>ARCHINDY STUDIO — Architecture • Interior • Contractor</p>
+        <p style="margin-top: 12px">© 2026 — Creating spaces that speak</p>
+      </div>
+    </footer>
+
+    <script>
+      // Burger Menu
+      const burger = document.getElementById("burgerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenuBtn = document.getElementById("closeMenuBtn");
+
+      burger.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      const closeMenu = () => {
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      };
+
+      closeMenuBtn.addEventListener("click", closeMenu);
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) closeMenu();
+      });
+      document
+        .querySelectorAll(".mobile-menu a")
+        .forEach((link) => link.addEventListener("click", closeMenu));
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target)
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          closeMenu();
+        });
+      });
+
+      // Navbar scroll
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from(".hero-content", {
+        duration: 1.2,
+        y: 80,
+        opacity: 0,
+        ease: "power3.out",
+      });
+
+      gsap.from(".about-grid", {
+        scrollTrigger: { trigger: "#about", start: "top 80%" },
+        duration: 1,
+        y: 50,
+        opacity: 0,
+      });
+
+      gsap.from(".service-card", {
+        scrollTrigger: { trigger: "#services", start: "top 80%" },
+        duration: 0.8,
+        y: 40,
+        opacity: 0,
+        stagger: 0.2,
+      });
+
+      gsap.from(".portfolio-item", {
+        scrollTrigger: { trigger: "#portfolio", start: "top 80%" },
+        duration: 0.8,
+        y: 40,
+        opacity: 0,
+        stagger: 0.1,
+      });
+
+      // Form
+      document
+        .getElementById("contactForm")
+        ?.addEventListener("submit", (e) => {
+          e.preventDefault();
+          alert("Thank you. Archindy Studio will respond within 24 hours.");
+          e.target.reset();
+        });
+    </script>
+  </body>
+</html>
